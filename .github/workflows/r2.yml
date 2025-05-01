@@ -2,6 +2,10 @@ name: 部署图片到 R2
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - '**'
 
 jobs:
   sync_to_r2:
