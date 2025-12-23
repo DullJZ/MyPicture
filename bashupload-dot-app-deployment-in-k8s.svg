@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" style="background-color: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="internetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0" style="stop-color:#e9ecef;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#dee2e6;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="k8sGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0" style="stop-color:#e7f5ff;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#d0ebff;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0" style="stop-color:#ffffff;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#f1f3f5;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="certGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#fff0f6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#ffdeeb;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowTraffic" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,6 L8,3 z" fill="#28a745"/>
+    </marker>
+    <marker id="arrowCert" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,6 L8,3 z" fill="#845ef7"/>
+    </marker>
+  </defs>
+  <g transform="translate(450, 40)">
+    <rect x="0" y="0" width="300" height="80" rx="10" fill="url(#internetGrad)" stroke="#adb5bd" stroke-width="2"/>
+    <text x="150" y="25" fill="#495057" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">Internet (外部)</text>
+    <g transform="translate(50, 35)">
+      <rect x="0" y="0" width="200" height="35" rx="5" fill="#ffffff" stroke="#ced4da" stroke-width="1"/>
+      <text x="100" y="22" fill="#212529" font-size="14" text-anchor="middle" style="white-space: pre;">Public DNS (多 A 记录)</text>
+    </g>
+  </g>
+  <g transform="translate(50, 200)">
+    <rect x="-20" y="-20" width="240" height="220" rx="15" fill="url(#certGrad)" stroke="#faa2c1" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="100" y="5" fill="#845ef7" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">外部验证服务</text>
+    <g transform="translate(10, 40)">
+      <rect x="0" y="0" width="180" height="50" rx="8" fill="#ffffff" stroke="#845ef7" stroke-width="1"/>
+      <text x="90" y="20" fill="#212529" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">Cloudflare DNS</text>
+      <text x="90" y="40" fill="#495057" font-size="11" text-anchor="middle" style="white-space: pre;">(ACME DNS-01 挑战记录)</text>
+    </g>
+    <g transform="translate(10, 130)">
+      <rect x="0" y="0" width="180" height="50" rx="8" fill="#ffffff" stroke="#845ef7" stroke-width="1"/>
+      <text x="90" y="30" fill="#212529" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">Let's Encrypt ACME</text>
+    </g>
+    <path d="M100,90 L100,130" stroke="#845ef7" stroke-width="2" marker-end="url(#arrowCert)" marker-start="url(#arrowCert)"/>
+    <text x="105" y="115" fill="#845ef7" font-size="11" text-anchor="start" style="white-space: pre;">TXT 验证</text>
+  </g>
+  <g transform="translate(280, 180)">
+    <rect x="0" y="0" width="880" height="620" rx="20" fill="url(#k8sGrad)" stroke="#339af0" stroke-width="3"/>
+    <text x="440" y="35" fill="#1c7ed6" font-size="22" font-weight="bold" text-anchor="middle" style="white-space: pre;">K3s 集群 Kubernetes Cluster</text>
+    <g transform="translate(30, 70)">
+      <rect x="0" y="0" width="820" height="110" rx="10" fill="#e3fafc" stroke="#15aabf" stroke-width="2" stroke-dasharray="8,4"/>
+      <text x="410" y="25" fill="#0c8599" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">命名空间: cert-manager (证书管理控制平面)</text>
+      <g transform="translate(40, 40)">
+        <g transform="translate(0,0)">
+          <rect x="0" y="0" width="130" height="40" rx="5" fill="#ffffff" stroke="#15aabf"/>
+          <text x="65" y="25" fill="#495057" font-size="12" text-anchor="middle" style="white-space: pre;">CF API Token Secret</text>
+        </g>
+        <g transform="translate(180,0)">
+          <rect x="0" y="0" width="160" height="40" rx="5" fill="#ffffff" stroke="#15aabf"/>
+          <text x="80" y="18" fill="#212529" font-size="13" font-weight="bold" text-anchor="middle" style="white-space: pre;">ClusterIssuer</text>
+          <text x="80" y="35" fill="#495057" font-size="11" text-anchor="middle" style="white-space: pre;">(DNS-01: Cloudflare)</text>
+        </g>
+        <g transform="translate(390,0)">
+          <rect x="0" y="0" width="140" height="40" rx="5" fill="#22b8cf" stroke="#1098ad"/>
+          <text x="70" y="25" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">cert-manager</text>
+        </g>
+        <g transform="translate(580,0)">
+          <rect x="0" y="0" width="180" height="50" rx="5" fill="#fff3bf" stroke="#fcc419" stroke-width="2"/>
+          <text x="90" y="20" fill="#212529" font-size="13" font-weight="bold" text-anchor="middle" style="white-space: pre;">wildcard-tls-secret</text>
+          <text x="90" y="40" fill="#868e96" font-size="11" text-anchor="middle" style="white-space: pre;">(tls.crt / tls.key)</text>
+        </g>
+        <path d="M130,20 L180,20" stroke="#15aabf" stroke-width="2" marker-end="url(#arrowCert)" stroke-dasharray="3,3"/>
+        <path d="M340,20 L390,20" stroke="#15aabf" stroke-width="2" marker-end="url(#arrowCert)"/>
+        <path d="M530,20 L580,20" stroke="#15aabf" stroke-width="2" marker-end="url(#arrowCert)"/>
+        <path d="M260,0 C260,-80 -120,20 -120,60" stroke="#845ef7" stroke-width="2" marker-end="url(#arrowCert)" fill="none"/>
+        <text x="0" y="-30" fill="#845ef7" font-size="12" style="white-space: pre;">DNS-01 验证请求</text>
+      </g>
+    </g>
+    <g transform="translate(30, 210)">
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="240" height="350" rx="10" fill="url(#nodeGrad)" stroke="#ced4da" stroke-width="2"/>
+        <rect x="0" y="0" width="240" height="40" rx="10" fill="#e9ecef" stroke="none" style="clip-path: inset(0 0 70% 0);"/>
+        <text x="120" y="28" fill="#495057" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">Worker 节点 1</text>
+        <text x="120" y="50" fill="#868e96" font-size="12" text-anchor="middle" id="ip1-text" style="white-space: pre;">(公网 IP1)</text>
+        <g transform="translate(20, 80)">
+          <rect x="0" y="0" width="200" height="200" rx="8" fill="#ffffff" stroke="#28a745" stroke-width="2" stroke-dasharray="6,3"/>
+          <text x="100" y="25" fill="#28a745" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">DaemonSet Pod</text>
+          <g transform="translate(20, 45)">
+            <rect x="0" y="0" width="160" height="65" rx="5" fill="#d4edda" stroke="#28a745"/>
+            <text x="80" y="20" fill="#155724" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">Nginx (TLS 终止)</text>
+            <text x="80" y="40" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">监听 hostPort 80/443</text>
+            <text x="80" y="55" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">挂载 wildcard-tls-secret</text>
+          </g>
+          <g transform="translate(20, 125)">
+            <rect x="0" y="0" width="160" height="55" rx="5" fill="#cce5ff" stroke="#004085"/>
+            <text x="80" y="25" fill="#004085" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">App (bashupload)</text>
+            <text x="80" y="45" fill="#004085" font-size="11" text-anchor="middle" style="white-space: pre;">监听 127.0.0.1:3000</text>
+          </g>
+          <path d="M100,110 L100,125" stroke="#28a745" stroke-width="3" marker-end="url(#arrowTraffic)"/>
+        </g>
+        <g transform="translate(40, 300)">
+          <rect x="0" y="0" width="160" height="30" rx="15" fill="#f8f9fa" stroke="#adb5bd"/>
+          <text x="80" y="20" fill="#adb5bd" font-size="12" font-weight="bold" text-anchor="middle" style="white-space: pre;">WireGuard 隧道接口</text>
+        </g>
+      </g>
+      <g transform="translate(290, 0)">
+        <rect x="0" y="0" width="240" height="350" rx="10" fill="url(#nodeGrad)" stroke="#ced4da" stroke-width="2"/>
+        <rect x="0" y="0" width="240" height="40" rx="10" fill="#e9ecef" stroke="none" style="clip-path: inset(0 0 70% 0);"/>
+        <text x="120" y="28" fill="#495057" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">Worker 节点 2</text>
+        <text x="120" y="50" fill="#868e96" font-size="12" text-anchor="middle" style="white-space: pre;">(公网 IP2)</text>
+        <g transform="translate(20, 80)">
+          <rect x="0" y="0" width="200" height="200" rx="8" fill="#ffffff" stroke="#28a745" stroke-width="2" stroke-dasharray="6,3"/>
+          <text x="100" y="25" fill="#28a745" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">DaemonSet Pod</text>
+          <g transform="translate(20, 45)">
+            <rect x="0" y="0" width="160" height="65" rx="5" fill="#d4edda" stroke="#28a745"/>
+            <text x="80" y="20" fill="#155724" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">Nginx (TLS 终止)</text>
+            <text x="80" y="40" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">监听 hostPort 80/443</text>
+            <text x="80" y="55" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">挂载 wildcard-tls-secret</text>
+          </g>
+          <g transform="translate(20, 125)">
+            <rect x="0" y="0" width="160" height="55" rx="5" fill="#cce5ff" stroke="#004085"/>
+            <text x="80" y="25" fill="#004085" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">App (bashupload)</text>
+            <text x="80" y="45" fill="#004085" font-size="11" text-anchor="middle" style="white-space: pre;">监听 127.0.0.1:3000</text>
+          </g>
+          <path d="M100,110 L100,125" stroke="#28a745" stroke-width="3" marker-end="url(#arrowTraffic)"/>
+        </g>
+        <g transform="translate(40, 300)">
+          <rect x="0" y="0" width="160" height="30" rx="15" fill="#f8f9fa" stroke="#adb5bd"/>
+          <text x="80" y="20" fill="#adb5bd" font-size="12" font-weight="bold" text-anchor="middle" style="white-space: pre;">WireGuard 隧道接口</text>
+        </g>
+      </g>
+      <g transform="translate(580, 0)">
+        <rect x="0" y="0" width="240" height="350" rx="10" fill="url(#nodeGrad)" stroke="#ced4da" stroke-width="2"/>
+        <rect x="0" y="0" width="240" height="40" rx="10" fill="#e9ecef" stroke="none" style="clip-path: inset(0 0 70% 0);"/>
+        <text x="120" y="28" fill="#495057" font-size="16" font-weight="bold" text-anchor="middle" style="white-space: pre;">Worker 节点 3</text>
+        <text x="120" y="50" fill="#868e96" font-size="12" text-anchor="middle" style="white-space: pre;">(公网 IP3)</text>
+        <g transform="translate(20, 80)">
+          <rect x="0" y="0" width="200" height="200" rx="8" fill="#ffffff" stroke="#28a745" stroke-width="2" stroke-dasharray="6,3"/>
+          <text x="100" y="25" fill="#28a745" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">DaemonSet Pod</text>
+          <g transform="translate(20, 45)">
+            <rect x="0" y="0" width="160" height="65" rx="5" fill="#d4edda" stroke="#28a745"/>
+            <text x="80" y="20" fill="#155724" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">Nginx (TLS 终止)</text>
+            <text x="80" y="40" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">监听 hostPort 80/443</text>
+            <text x="80" y="55" fill="#155724" font-size="11" text-anchor="middle" style="white-space: pre;">挂载 wildcard-tls-secret</text>
+          </g>
+          <g transform="translate(20, 125)">
+            <rect x="0" y="0" width="160" height="55" rx="5" fill="#cce5ff" stroke="#004085"/>
+            <text x="80" y="25" fill="#004085" font-size="14" font-weight="bold" text-anchor="middle" style="white-space: pre;">App (bashupload)</text>
+            <text x="80" y="45" fill="#004085" font-size="11" text-anchor="middle" style="white-space: pre;">监听 127.0.0.1:3000</text>
+          </g>
+          <path d="M100,110 L100,125" stroke="#28a745" stroke-width="3" marker-end="url(#arrowTraffic)"/>
+        </g>
+        <g transform="translate(40, 300)">
+          <rect x="0" y="0" width="160" height="30" rx="15" fill="#f8f9fa" stroke="#adb5bd"/>
+          <text x="80" y="20" fill="#adb5bd" font-size="12" font-weight="bold" text-anchor="middle" style="white-space: pre;">WireGuard 隧道接口</text>
+        </g>
+      </g>
+      <path d="M240,315 L290,315" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowCert)" marker-start="url(#arrowCert)"/>
+      <path d="M530,315 L580,315" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowCert)" marker-start="url(#arrowCert)"/>
+      <path d="M200,330 Q410,380 620,330" stroke="#adb5bd" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowCert)" marker-start="url(#arrowCert)"/>
+    </g>
+    <g transform="translate(680, 120)">
+      <path d="M0,25 C-300,25 -450,150 -520,215" stroke="#fcc419" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowCert)"/>
+      <path d="M0,25 C-100,25 -200,150 -230,215" stroke="#fcc419" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowCert)"/>
+      <path d="M0,25 C100,25 100,150 60,215" stroke="#fcc419" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowCert)"/>
+      <text x="-200" y="130" fill="#fcc419" font-size="12" font-weight="bold" style="white-space: pre;">证书挂载</text>
+    </g>
+  </g>
+  <g transform="matrix(0.999999, 0.000298, -0.000298, 0.999999, 623, 75)" style="transform-origin: -30px 182.5px;">
+    <path d="M 0 0 C -150 80 -199.047 191.024 -199.047 356.024" stroke="#28a745" stroke-width="4" fill="none" marker-end="url(#arrowTraffic)"/>
+    <path d="M 0 0 C -20 80 99.544 189.496 99.544 354.496" stroke="#28a745" stroke-width="4" fill="none" marker-end="url(#arrowTraffic)"/>
+    <path d="M 2.666 4.48 C 97.055 46.835 365.746 197.468 386.119 357.767" stroke="#28a745" stroke-width="4" fill="none" marker-end="url(#arrowTraffic)"/>
+    <text x="0" y="95" fill="#28a745" font-size="14" font-weight="bold" text-anchor="middle" style="text-shadow: white 1px 1px 2px; white-space: pre;">DNS 轮询解析流量</text>
+  </g>
+  <g transform="translate(900, 750)">
+    <rect x="0" y="0" width="280" height="80" rx="5" fill="white" stroke="#dee2e6"/>
+    <text x="10" y="20" fill="#495057" font-weight="bold" style="white-space: pre;">图例说明:</text>
+    <line x1="10" y1="35" x2="50" y2="35" stroke="#28a745" stroke-width="3" marker-end="url(#arrowTraffic)"/>
+    <text x="60" y="40" fill="#28a745" font-size="12" style="white-space: pre;">用户访问流量 (HTTPS)</text>
+    <line x1="10" y1="55" x2="50" y2="55" stroke="#845ef7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowCert)"/>
+    <text x="60" y="60" fill="#845ef7" font-size="12" style="white-space: pre;">管理/内部通信/证书流</text>
+  </g>
+</svg>
